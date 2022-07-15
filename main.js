@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       './icons/email.png',
       './icons/location.png',
       './icons/web.png',
-      './icons/profile.png',
+      './icons/phone.png',
       './icons/left.png',
       './icons/right.png',
 	  paramTopCenterImage,
@@ -53,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	  paramTopLeftImage,
     ]);
 
-    const planeGeometry = new THREE.PlaneGeometry(1, 0.552);
+    //const planeGeometry = new THREE.PlaneGeometry(1, 0.552);
+	const planeGeometry = new THREE.PlaneGeometry(1.2,1);
     const cardMaterial = new THREE.MeshBasicMaterial({map: cardTexture});
     const card = new THREE.Mesh(planeGeometry, cardMaterial);
 
-    const iconGeometry = new THREE.CircleGeometry(0.075, 32);
+    //const iconGeometry = new THREE.CircleGeometry(0.075, 32);  //
+	const iconGeometry = new THREE.PlaneGeometry(0.2, 0.2);
     const emailMaterial = new THREE.MeshBasicMaterial({map: emailTexture});
     const webMaterial = new THREE.MeshBasicMaterial({map: webTexture});
     const profileMaterial = new THREE.MeshBasicMaterial({map: profileTexture});
@@ -84,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioItem1 = new THREE.Mesh(planeGeometry, portfolioItem1Material); 
     const portfolioItem2 = new THREE.Mesh(planeGeometry, portfolioItem2Material); 
 
-    profileIcon.position.set(-0.42, -0.5, 0);
-    webIcon.position.set(-0.14, -0.5, 0);
-    emailIcon.position.set(0.14, -0.5, 0);
-    locationIcon.position.set(0.42, -0.5, 0);
+    profileIcon.position.set(-0.42, -0.625, 0);
+    webIcon.position.set(-0.14, -0.625, 0);
+    emailIcon.position.set(0.14, -0.625, 0);
+    locationIcon.position.set(0.42, -0.625, 0);
 
     const portfolioGroup = new THREE.Group();
     //portfolioGroup.position.set(0, 0, -0.01);
@@ -126,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
     const textElement = document.createElement("div");
     const textObj = new CSS3DObject(textElement);
-    textObj.position.set(0, -700, 0);
+    textObj.position.set(0, -750, 0);
     textObj.visible = false;
     textElement.style.background = "#FFFFFF";
     textElement.style.padding = "30px";
@@ -207,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setAnimationLoop(() => {
       const delta = clock.getDelta();
       const elapsed = clock.getElapsedTime();
-      const iconScale = 1 + 0.2 * Math.sin(elapsed*5);
+      const iconScale = 1 + 0.2 * Math.sin(elapsed*3);
       [webIcon, emailIcon, profileIcon, locationIcon].forEach((icon) => {
 	icon.scale.set(iconScale, iconScale, iconScale);
       });
